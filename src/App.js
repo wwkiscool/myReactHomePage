@@ -1,11 +1,12 @@
 import React from 'react';
 
+import ReactCenter from './router.js'
 export default class App extends React.Component {
-  render(){
+  render() {
     return (
-      <div>
-        wwwww
-      </div>
+      <>
+        <ReactCenter></ReactCenter>
+      </>
     )
   }
 }

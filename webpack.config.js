@@ -2,33 +2,36 @@ const path = require('path');
 const HtmlWebPackPlugin = require("html-webpack-plugin")
 module.exports = {
   entry: './src/main.js',
-  output:{
-    filename:'bundle.js',
-    path:path.resolve(__dirname,'dist')
+  output: {
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist')
   },
-  module:{
-    rules:[
+  module: {
+    rules: [
       {
-        test:/\.js$/,
-        exclude:/node_modules/,
-        use:{
-          loader:'babel-loader'
-        }
+        test: /\.js|jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader'
+        },
       },
       {
-        test:/\.html$/,
-        use:{
-          loader:'html-loader'
+        test: /\.html$/,
+        use: {
+          loader: 'html-loader'
         }
+      }, {
+        test: /\.(ts|tsx)$/,
+        loader: "ts-loader"
       }
     ]
   },
-  plugins:[
+  plugins: [
     new HtmlWebPackPlugin({
-      title:"seaside_cottage",
-      filename:'index.html',
-      template:'./src/index.html'
+      title: "seaside_cottage",
+      filename: 'index.html',
+      template: './src/index.html'
     })
   ],
-  devtool:'inline-source-map',
+  devtool: 'inline-source-map',
 }
